@@ -1,0 +1,2 @@
+import type { AssistanceLevel, Outcome } from './types';
+export function buildWeeklyReview(items: ReadonlyArray<{ outcome: Outcome; assistance: AssistanceLevel; initiative?: boolean }>) { return { planned: items.length, completed: items.filter(i => i.outcome === 'success').length, independent: items.filter(i => i.assistance === 'independent').length, askedForHelp: items.filter(i => i.assistance === 'needs_help').length, initiatives: items.filter(i => i.initiative).length }; }

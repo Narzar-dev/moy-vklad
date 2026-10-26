@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Мой опыт",
+    "icon": "./assets/icon.png",
+    "slug": "moy-vklad",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": { "package": "ru.moyvklad.app" },
+    "plugins": ["expo-router"],
+    "experiments": { "typedRoutes": true }
+  }
+}

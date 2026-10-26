@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Android / Gradle generated files
+.gradle/
+.gradle-local/
+android/.gradle/
+android/.kotlin/
+android/local.properties
+android/build/
+android/app/build/
+
+# Local environment and signing files
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+
+# Local IDE settings
+.idea/
+
+# Imported local family profile (contains personal data)
+src/infrastructure/imported-family.json
+

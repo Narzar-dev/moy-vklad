@@ -1,0 +1,243 @@
+{
+  "version": "1.0",
+  "meta": {
+    "title": "Мой Опыт — Редизайн UI/UX (Детский и Родительский режим)",
+    "author": "AI UI Designer",
+    "description": "5 вариантов экранов для разных размеров устройств и режимов использования согласно ТЗ",
+    "created": "2026-10-08"
+  },
+  "tokens": {
+    "colors": {
+      "primary": "#4CAF50",
+      "primaryLight": "#E8F5E9",
+      "primaryDark": "#2E7D32",
+      "accentWarm": "#FF9800",
+      "accentStar": "#FFD54F",
+      "bgChild": "#F0F9F5",
+      "bgParent": "#FAFAFA",
+      "surface": "#FFFFFF",
+      "textPrimary": "#1E293B",
+      "textSecondary": "#64748B",
+      "border": "#E2E8F0",
+      "danger": "#EF4444"
+    },
+    "typography": {
+      "fontFamily": "Inter, system-ui, -apple-system, sans-serif",
+      "h1": { "fontSize": 24, "fontWeight": 700, "lineHeight": 32 },
+      "h2": { "fontSize": 20, "fontWeight": 600, "lineHeight": 28 },
+      "body": { "fontSize": 16, "fontWeight": 400, "lineHeight": 24 },
+      "caption": { "fontSize": 14, "fontWeight": 400, "lineHeight": 20 }
+    },
+    "radii": {
+      "card": 16,
+      "button": 12,
+      "pill": 999
+    }
+  },
+  "frames": [
+    {
+      "id": "variant_1_mobile_portrait",
+      "name": "Вариант 1: Mobile Portrait (390x844 - iPhone 14 / Android)",
+      "targetDevice": "Mobile (Portrait)",
+      "viewport": { "width": 390, "height": 844 },
+      "safeArea": { "top": 47, "bottom": 34, "left": 0, "right": 0 },
+      "layout": {
+        "type": "flex",
+        "direction": "vertical",
+        "padding": { "top": 47, "bottom": 34, "left": 16, "right": 16 },
+        "gap": 16
+      },
+      "components": [
+        {
+          "type": "Header",
+          "id": "header_child",
+          "greeting": "Привет, Аня! ✨",
+          "totalXp": "820 XP",
+          "avatar": "🎨",
+          "style": { "background": "#E8F5E9", "borderRadius": 16, "padding": 16 }
+        },
+        {
+          "type": "ProgressCard",
+          "id": "daily_stars_progress",
+          "title": "Звёзды за сегодня",
+          "xpCurrent": 350,
+          "xpNext": 400,
+          "stars": [
+            { "level": "space", "status": "unlocked" },
+            { "level": "shining", "status": "unlocked" },
+            { "level": "shining", "status": "unlocked" },
+            { "level": "basic", "status": "in_progress" }
+          ],
+          "barProgress": "87.5%",
+          "caption": "50 XP до следующей звезды"
+        },
+        {
+          "type": "Section",
+          "id": "active_tasks_section",
+          "title": "Дела на сейчас (3)",
+          "items": [
+            { "id": "t1", "title": "Заправить кровать", "steps": "2 шага", "xp": 10, "icon": "🛏️" },
+            { "id": "t2", "title": "Полить растение", "steps": "2 шага", "xp": 5, "icon": "🪴" },
+            { "id": "t3", "title": "Собрать рюкзак по расписанию", "steps": "2 шага", "xp": 10, "icon": "🎒" }
+          ]
+        },
+        {
+          "type": "Accordion",
+          "id": "later_tasks",
+          "title": "Другие незакрытые дела (2)",
+          "state": "collapsed"
+        },
+        {
+          "type": "CardCTA",
+          "id": "initiative_card",
+          "title": "✨ Я сама придумала",
+          "subtitle": "Заметила полезное дело? Добавь свою идею"
+        },
+        {
+          "type": "BottomBar",
+          "id": "child_navigation",
+          "buttons": [
+            { "label": "⚙️ Оформление", "action": "open_settings" },
+            { "label": "🔒 Для взрослого", "action": "open_pin_modal" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "variant_2_mobile_landscape",
+      "name": "Вариант 2: Mobile Landscape (844x390 - Адаптивная альбомная ориентация)",
+      "targetDevice": "Mobile (Landscape)",
+      "viewport": { "width": 844, "height": 390 },
+      "safeArea": { "top": 0, "bottom": 21, "left": 47, "right": 47 },
+      "layout": {
+        "type": "grid",
+        "columns": 2,
+        "gap": 16,
+        "padding": { "top": 16, "bottom": 21, "left": 47, "right": 47 }
+      },
+      "components": [
+        {
+          "column": 1,
+          "widgets": ["header_child", "daily_stars_progress", "initiative_card"]
+        },
+        {
+          "column": 2,
+          "widgets": ["active_tasks_section", "later_tasks", "child_navigation"]
+        }
+      ]
+    },
+    {
+      "id": "variant_3_tablet",
+      "name": "Вариант 3: Tablet / Foldable (768x1024 - Планшетный экран)",
+      "targetDevice": "Tablet",
+      "viewport": { "width": 768, "height": 1024 },
+      "safeArea": { "top": 24, "bottom": 24, "left": 24, "right": 24 },
+      "layout": {
+        "type": "two_column_split",
+        "leftWidth": "320px",
+        "rightWidth": "flex-1",
+        "gap": 24
+      },
+      "components": [
+        {
+          "sidebar": {
+            "title": "Мой опыт",
+            "profile": { "name": "Аня", "xp": "820 XP" },
+            "navigation": ["Главная", "Мои звёзды", "Оформление", "Родительский контроль (PIN)"]
+          },
+          "mainContent": {
+            "topBanner": "daily_stars_progress",
+            "taskGrid": { "type": "cards_grid", "columns": 2, "source": "active_tasks_section" },
+            "laterSection": "later_tasks"
+          }
+        }
+      ]
+    },
+    {
+      "id": "variant_4_desktop_parent",
+      "name": "Вариант 4: Desktop / Web — Родительский режим (1280x800)",
+      "targetDevice": "Desktop / Web",
+      "viewport": { "width": 1280, "height": 800 },
+      "layout": {
+        "type": "sidebar_and_content",
+        "maxContentWidth": 1100,
+        "alignment": "center"
+      },
+      "components": [
+        {
+          "type": "ParentHeader",
+          "title": "Семейный обзор",
+          "stats": { "completed": "1 из 30 действий", "currentXp": "820 XP" },
+          "backButton": "← В детский режим"
+        },
+        {
+          "type": "Grid",
+          "columns": 3,
+          "gap": 20,
+          "items": [
+            {
+              "type": "Card",
+              "title": "Уровень сложности",
+              "options": [
+                { "label": "Лёгкий", "desc": "3x3 уровня" },
+                { "label": "Средний", "desc": "4x3 уровня", "selected": true },
+                { "label": "Сложный", "desc": "5x3 уровня" }
+              ]
+            },
+            {
+              "type": "Card",
+              "title": "История дел",
+              "content": "Сворачиваемый список выполненных задач по дням с фильтрацией и XP"
+            },
+            {
+              "type": "Card",
+              "title": "Данные и Бэкап",
+              "actions": ["Импортировать JSON", "Экспортировать JSON", "Сбросить данные"]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "title": "Управление делами и шаблонами",
+          "searchAndFilter": true,
+          "categories": ["Школа и учёба", "Забота о себе", "Забота о семье", "Забота о доме", "Познание нового", "Физическое развитие"],
+          "actionButton": "+ Создать новое дело"
+        }
+      ]
+    },
+    {
+      "id": "variant_5_modal_flow",
+      "name": "Вариант 5: Modal & Execution Flow (390x844 - Экраны выполнения и PIN)",
+      "targetDevice": "Mobile Focus Overlay",
+      "viewport": { "width": 390, "height": 844 },
+      "subScreens": [
+        {
+          "name": "Screen 5A: Выполнение дела",
+          "components": [
+            { "type": "TopBar", "title": "Заправить кровать", "backAction": true },
+            { "type": "StepList", "steps": ["1. Расправить простыню и подушку", "2. Ровно постелить покрывало"] },
+            { "type": "SectionTitle", "text": "Как всё прошло?" },
+            {
+              "type": "OptionGrid",
+              "options": [
+                { "label": "Сделала сама", "icon": "🌟", "xp": "+10 XP" },
+                { "label": "Нужна была подсказка", "icon": "💡", "xp": "+10 XP" },
+                { "label": "Сделали вместе", "icon": "🤝", "xp": "+10 XP" },
+                { "label": "Пока не получилось", "icon": "🌱", "xp": "+0 XP", "neutralNote": "Ничего страшного, попробуем позже!" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Screen 5B: PIN Взрослого (Secure Overlay)",
+          "components": [
+            { "type": "ModalCard", "title": "Введите PIN взрослого" },
+            { "type": "PinInput", "length": 4, "masked": true },
+            { "type": "Keypad", "numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0] },
+            { "type": "Actions", "buttons": ["Открыть", "Отмена"] }
+          ]
+        }
+      ]
+    }
+  ]
+}
